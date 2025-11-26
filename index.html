@@ -197,7 +197,10 @@
   <body>
     <!-- 👇 Your entire original content (untouched) -->
     <!-- START -->
-
+    <audio id="bgMusic" loop>
+      <source src="music.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
     <div id="wrapper">
       <div class="flag__birthday">
         <img src="1.png" alt="" width="350" class="flag__left" />
@@ -370,6 +373,33 @@
 
     <!-- Original script unchanged -->
     <script>
+      const bgMusic = document.getElementById("bgMusic");
+
+      // Hàm để bắt đầu phát nhạc
+      function playMusic() {
+        bgMusic.play().catch(function (error) {
+          console.log("Audio playback failed:", error);
+        });
+      }
+
+      // Thêm sự kiện click để bắt đầu phát nhạc
+      document.addEventListener(
+        "click",
+        function () {
+          playMusic();
+        },
+        { once: true }
+      );
+
+      // Thêm sự kiện touch để bắt đầu phát nhạc trên mobile
+      document.addEventListener(
+        "touchstart",
+        function () {
+          playMusic();
+        },
+        { once: true }
+      );
+
       let datetxt = "27 November";
       let datatxtletter =
         "Em cũng không biết chúc gì hơn, mong chị em tuổi mới luôn vui vẻ, mạnh khoẻ và xinh đẹp nà. Và dù thế nào thì vẫn giữ được tinh thần lạc quan yêu đời nhe :3333💕";
